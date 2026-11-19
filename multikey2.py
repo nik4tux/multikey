@@ -133,10 +133,9 @@ class multikey2_dict(multikey1_dict):
                     # end if
                 # end if
             # end if
+            return rslt
         except Exception as e:
             raise Exception('exception in append_record: '+str(e))
-        finally:
-            return rslt
         # end try
     # end func ----------------------------------------------------------------
 
@@ -208,8 +207,9 @@ class multikey2_dict(multikey1_dict):
                 info_rslt=rec.get_max_item()
                 info=self.sepchar.join(info_rslt)
                 rslt=self._unpack_strkey(key_rslt,info)
-        finally:
-            return rslt
+            # end if
+        except:
+            return None
         # end try
     # end func ----------------------------------------------------------------
 
@@ -227,8 +227,9 @@ class multikey2_dict(multikey1_dict):
                 tmp.append([combo_value,key,info_str])
             # end for k
             rslt=self._finalize_sort_list(n,tmp)
-        finally:
             return rslt
+        except:
+            return None
         # end try
     # end func ----------------------------------------------------------------
 

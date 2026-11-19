@@ -115,8 +115,9 @@ class multikey1_base(multikey0_base):
                 attrs=self._unpack_strkey(item[1],item[2])
                 rslt.append([item[0],attrs])
             # end for
-        finally:
             return rslt
+        except:
+            return None
         # end try
     # end func ----------------------------------------------------------------
 
@@ -235,8 +236,9 @@ class multikey1_list(multikey1_base):
             for k in range(len(self.keys)):
                 rslt += self.vals[k]
             # end for k
-        finally:
             return rslt
+        except:
+            return 0.0
         # end try
     # end func ----------------------------------------------------------------
 
@@ -361,8 +363,9 @@ class multikey1_dict(multikey1_base):
                 tmp.append([self.data[key][0],key,self.data[key][1]])
             # end for k
             rslt=self._finalize_sort_list(n,tmp)
-        finally:
             return rslt
+        except:
+            return None
         # end try
     # end func ----------------------------------------------------------------
 
@@ -372,8 +375,9 @@ class multikey1_dict(multikey1_base):
             for key in self.data.keys():
                 rslt += self.data[key][0]
             # end for k
-        finally:
             return rslt
+        except:
+            return 0.0
         # end try
     # end func ----------------------------------------------------------------
 
@@ -397,8 +401,10 @@ class multikey1_dict(multikey1_base):
             else:
                 info_rslt=self.data[key_rslt][1]
                 rslt=self._unpack_strkey(key_rslt,info_rslt)
-        finally:
+            # end if
             return rslt
+        except:
+            return None
         # end try
     # end func ----------------------------------------------------------------
 
