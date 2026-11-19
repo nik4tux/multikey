@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-@author: nickkuz
+@author: nik4tux
 """
 #  Class for storage of key-value pairs. Key is composite: it is list of attributes.
 #  Each key is assumed to be unique (it differs from others at least in one attribute)
@@ -131,8 +131,9 @@ class multikey0_base:
                 attrs=self._unpack_strkey(item[1])
                 rslt.append([item[0],attrs])
             # end for
-        finally:
             return rslt
+        except:
+            return None
         # end try
     # end func ----------------------------------------------------------------
 
@@ -269,8 +270,9 @@ class multikey0_list(multikey0_base):
             for k in range(len(self.keys)):
                 rslt += self.vals[k]
             # end for k
-        finally:
             return rslt
+        except:
+            return 0.0
         # end try
     # end func ----------------------------------------------------------------
 
@@ -287,12 +289,14 @@ class multikey0_list(multikey0_base):
                     # end if
                 # end if
             # end for k
-        finally:
             if (k_rslt is None):
                 return None
             else:
                 key=self.keys[k_rslt]
                 return self._unpack_strkey(key)
+            # end if
+        except:
+            return None
         # end try
     # end func ----------------------------------------------------------------
 
@@ -410,29 +414,31 @@ class multikey0_dict(multikey0_base):
             for key in self.data.keys():
                 rslt += self.data[key]
             # end for k
-        finally:
             return rslt
+        except:
+            return 0.0
         # end try
     # end func ----------------------------------------------------------------
 
     # get attrs for item having max value
     def get_max_item(self):  # result is list of attrs
-        key_rslt=None
+        key_rslt=''
         try:
             for key in self.data.keys():
-                if (key_rslt is None):
+                if (key_rslt == ''):
                     key_rslt = key
                 else:
-                    if self.data[key]>self.data[key_rslt]:
+                    if self.data[key] > self.data[key_rslt]:
                         key_rslt = key
                     # end if
                 # end if
             # end for k
-        finally:
-            if (key_rslt is None):
-                return None
+            if (key_rslt == ''):
+                return []
             else:
                 return self._unpack_strkey(key_rslt)
+        except:
+            return []
         # end try
     # end func ----------------------------------------------------------------
 
@@ -445,8 +451,9 @@ class multikey0_dict(multikey0_base):
                 attrs=self._unpack_strkey(item[0])
                 rslt.append([item[1],attrs])
             # end for item
-        finally:
             return rslt
+        except:
+            return None
         # end try
     # end func ----------------------------------------------------------------
 
