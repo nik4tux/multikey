@@ -1,7 +1,9 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-@author: nickkuz
+@author: nik4tux
+Copyright (C) 2021
+Licensed under GNU GPLv3 (or later): see <https://www.gnu.org/licenses/>
 """
 #  Class for storage of key-value pairs. Key is composite: it is list of attributes.
 #  Each key is assumed to be unique (it differs from others at least in one attribute)
